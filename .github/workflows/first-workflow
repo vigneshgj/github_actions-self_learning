@@ -16,7 +16,7 @@ jobs:
           hostname
           uname -a 
           pwd
-          ls -lart
+          ls -la
           echo $GITHUB_SHA          # github commit id
           echo $GITHUB_REPOSITORY   # github repository name
           echo $GITHUB_WORKSPACE    # runner default location, from where all bash commands are executed
