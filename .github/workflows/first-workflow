@@ -1,0 +1,22 @@
+name: My first workflow
+on: [push]
+
+jobs:
+  run_echo_command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo single-line
+        run: echo "Hello World"
+      - name: echo multi-line
+        run: |
+          echo "First line"
+          echo "Second line"
+      - name: display github hosted runner info and github default variables
+        run: |
+          hostname
+          uname -a 
+          pwd
+          echo $GITHUB_SHA          # github commit id
+          echo $GITHUB_REPOSITORY   # github repository name
+          echo $GITHUB_WORKSPACE    # runner default location, from where all bash commands are executed
+
