@@ -2,7 +2,7 @@ name: My first workflow
 on: [push]
 
 jobs:
-  run_echo_command:
+  run_commands-linux:
     runs-on: ubuntu-latest
     steps:
       - name: echo single-line
@@ -11,7 +11,7 @@ jobs:
         run: |
           echo "First line"
           echo "Second line"
-      - name: display github hosted runner info and github default variables
+      - name: display github hosted runner info and github default variables - linux
         run: |
           hostname
           uname -a 
@@ -20,4 +20,23 @@ jobs:
           echo $GITHUB_SHA          # github commit id
           echo $GITHUB_REPOSITORY   # github repository name
           echo $GITHUB_WORKSPACE    # runner default location, from where all bash commands are executed
+  run_commands-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh     # this section is used to set default value for the shell to this specific job. Here setting powershell as default shell in windows
+    steps:
+      - name: display github hosted runner info and github default variables - windows
+        run: |
+          hostname
+          Get-Location
+          dir
+          echo $env:GITHUB_SHA          # github commit id
+          echo $env:GITHUB_REPOSITORY   # github repository name
+          echo $env:GITHUB_WORKSPACE    # runner default location
+      - name: run python
+        shell: python     # setting default shell to python to this specific step. This will have highest precedence over job and overall defaults.
+        run: |
+          import platform
+          print(platform.processor())
 
