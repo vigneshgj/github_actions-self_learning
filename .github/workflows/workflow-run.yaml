@@ -1,0 +1,14 @@
+name: Run this workflow based on the status of the other workflow
+on: 
+  workflow_run:
+    workflows: [My first workflow]
+    types: [completed]
+
+jobs:
+  echo-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo message 
+        run: |
+          echo "This workflow runs on:"
+          hostname
