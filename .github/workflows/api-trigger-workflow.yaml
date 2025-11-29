@@ -10,4 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo string step 
-        run: echo "Repository Dispatch Example"
+        run: |
+          echo "Repository Dispatch Example"
+          echo ${{ github.event.client_payload.test_msg }}
