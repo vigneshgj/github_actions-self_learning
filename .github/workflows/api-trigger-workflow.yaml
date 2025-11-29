@@ -1,4 +1,6 @@
 name: Workflow trigger based on external trigger like Rest API call (Example for Repository Dispatch)
+# Rest API URL: https://api.github.com/repos/<github_organization_name>/<repo_name>/dispatches
+# Reference: https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#create-a-repository-dispatch-event
 on:
   repository_dispatch:
     types: [build]
