@@ -1,0 +1,11 @@
+name: Workflow trigger based on external trigger like Rest API call (Example for Repository Dispatch)
+on:
+  repository_dispatch:
+    types: [build]
+
+jobs:
+  echo_string:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo string step 
+        run: echo "Repository Dispatch Example"
